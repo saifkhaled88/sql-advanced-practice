@@ -1,0 +1,10 @@
+•A GROUP BY collapses rows; a window function doesn’t. What does that mean for the number of rows in your result?
+	- GROUP BY reduces the number of rows returned, while a window function keeps the original rows and adds a calculated value to each row.
+
+•With ties in the ORDER BY column, how do ROW_NUMBER, RANK, and DENSE_RANK each behave? Write a tiny example with five values.
+	- ROW_NUMBER() Assigns a unique sequential number to every row, even when values are tied.
+	- RANK() Tied values receive the same rank, and the next rank is skipped.
+	- DENSE_RANK() Tied values receive the same rank, but the next rank is not skipped.
+
+•Why can’t you filter on a window function directly in WHERE? (Think about the order SQL evaluates clauses, and connect it to what you did with CTEs yesterday.)
+	- Because SQL processes the query in a specific logical execution order, and WHERE is evaluated before window functions are calculated.
