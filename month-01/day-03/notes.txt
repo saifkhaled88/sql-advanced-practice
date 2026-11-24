@@ -1,0 +1,11 @@
+1. What changes when you add ORDER BY inside OVER() for SUM()?
+Without ORDER BY, SUM() calculates the total for the entire partition (or entire result set if there is no partition).
+
+With ORDER BY, it becomes a running total (cumulative sum) by default, calculating the sum from the beginning up to the current row.
+
+2. What is the default frame when ORDER BY is present?
+PostgreSQL's default frame is:
+RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+
+3. How do you calculate the percent of the group total for each row without a self-join?
+You can use SUM() as a window function with PARTITION BY to calculate the group total, then divide each row's value by that total.
